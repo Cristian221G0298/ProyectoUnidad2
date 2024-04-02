@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="Guía_De_Episodios.Views.DetallesEpisodioView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Guía_De_Episodios.Views" xmlns:viewmodels="clr-namespace:Guía_De_Episodios.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:GuiaDeEpisodios}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="Transparent">
+    
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#ffc8b4"/>
+            <Setter Property="FontFamily" Value="Gill Sans MT Extra Bold"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextAlignment" Value="Justify"/>
+        </Style>
+    </UserControl.Resources>
+    <Border BorderBrush="#ff0028" BorderThickness="5">
+
+        <Border.Background>
+            <SolidColorBrush Color="#781414"/>
+        </Border.Background>
+
+        <DockPanel Margin="10">
+
+            <TextBlock Width="800" Text="{Binding Episodio.NumeroE, StringFormat='Episodio 0'}" DockPanel.Dock="Top" FontSize="30" TextAlignment="Center"/>
+            <TextBlock Width="800" Text="{Binding Episodio.Nombre}" DockPanel.Dock="Top" FontSize="30" TextAlignment="Center"/>
+
+            <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Bottom">
+
+                <Button Padding="15,5" Margin="5" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:Vistas.EditarEpi}">Editar</Button>
+                <Button Padding="15,5" Margin="5" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:Vistas.EliminarEpi}">Eliminar</Button>
+                <Button Padding="15,5" Margin="5" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:Vistas.ListaEpi}">Regresar</Button>
+
+            </WrapPanel>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+                <StackPanel>
+
+                    <Image  Stretch="Uniform"  Height="170" Source="{Binding Episodio.URLImagen}"/>
+                    <TextBlock FontSize="20" Text="{Binding Episodio.Duracion, StringFormat='Duración: 0 minutos'}" HorizontalAlignment="Left" DockPanel.Dock="Top"/>
+                    <TextBlock FontSize="20">Género(s): <Run Text="{Binding Episodio.Generos}"/></TextBlock>
+                    <TextBlock FontSize="16">Sinópsis: <Run Text="{Binding Episodio.SinopsisE}"/></TextBlock>
+                    
+                </StackPanel>
+
+            </ScrollViewer>
+        </DockPanel>
+    </Border>
+</UserControl>

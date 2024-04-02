@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Guía_De_Episodios.Views.EliminarTemporadaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Guía_De_Episodios.Views" xmlns:viewmodels="clr-namespace:Guía_De_Episodios.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:GuiaDeEpisodios}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="Black">
+
+    <Border Padding="5" Background="#781414" BorderBrush="#ff0028" BorderThickness="2" Width="250" Height="200">
+        
+        <StackPanel>
+
+            <Image Source="https://cdn-icons-png.flaticon.com/128/5822/5822081.png" Height="50"/>
+            <TextBlock Foreground="#ffc8b4" FontFamily="Gill Sans MT Extra Bold" TextAlignment="Center" FontSize="20" TextWrapping="Wrap">¿Realmente quieres eliminar esta temporada?, Se eliminarán todos los episodios que contenga.</TextBlock>
+            
+            <WrapPanel HorizontalAlignment="Center">
+                
+                <Button Padding="15,5" Margin="5" Command="{Binding EliminarTemCommand}">Si</Button>
+                <Button Padding="15,5" Margin="5" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:Vistas.ListaTem}">No</Button>
+                
+            </WrapPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

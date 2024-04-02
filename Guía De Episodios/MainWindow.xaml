@@ -1,0 +1,144 @@
+﻿<Window x:Class="Guía_De_Episodios.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Guía_De_Episodios" xmlns:viewmodels="clr-namespace:Guía_De_Episodios.ViewModels" xmlns:views="clr-namespace:Guía_De_Episodios.Views"
+        Title="Guía de episodios" Height="450" Width="800" Background="Transparent">
+
+    <Window.DataContext>
+        <viewmodels:GuiaDeEpisodios/>
+    </Window.DataContext>
+
+    <Grid>
+
+        <views:ListaTemporadasView>
+            <views:ListaTemporadasView.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static viewmodels:Vistas.ListaTem}">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </views:ListaTemporadasView.Style>
+        </views:ListaTemporadasView>
+
+        <views:ListaEpisodiosView>
+            <views:ListaEpisodiosView.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static viewmodels:Vistas.ListaEpi}">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </views:ListaEpisodiosView.Style>
+        </views:ListaEpisodiosView>
+
+        <views:AgregarEditarTemporadasView>
+            <views:AgregarEditarTemporadasView.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static viewmodels:Vistas.AgregarTem}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static viewmodels:Vistas.EditarTem}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        
+                    </Style.Triggers>
+                </Style>
+            </views:AgregarEditarTemporadasView.Style>
+        </views:AgregarEditarTemporadasView>
+
+        <views:AgregarEditarEpisodioView>
+            <views:AgregarEditarEpisodioView.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static viewmodels:Vistas.AgregarEpi}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static viewmodels:Vistas.EditarEpi}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </views:AgregarEditarEpisodioView.Style>
+        </views:AgregarEditarEpisodioView>
+
+        <views:EliminarTemporadaView>
+            <views:EliminarTemporadaView.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+                        
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static viewmodels:Vistas.EliminarTem}">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                        
+                    </Style.Triggers>
+                </Style>
+            </views:EliminarTemporadaView.Style>
+        </views:EliminarTemporadaView>
+
+        <views:EliminarEpisodioView>
+            <views:EliminarEpisodioView.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static viewmodels:Vistas.EliminarEpi}">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </views:EliminarEpisodioView.Style>
+        </views:EliminarEpisodioView>
+
+        <views:DetallesTemporadaView>
+            <views:DetallesTemporadaView.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static viewmodels:Vistas.DetallesTem}">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </views:DetallesTemporadaView.Style>
+        </views:DetallesTemporadaView>
+
+        <views:DetallesEpisodioView>
+            <views:DetallesEpisodioView.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="{x:Static viewmodels:Vistas.DetallesEpi}">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </views:DetallesEpisodioView.Style>
+        </views:DetallesEpisodioView>
+
+    </Grid>
+</Window>

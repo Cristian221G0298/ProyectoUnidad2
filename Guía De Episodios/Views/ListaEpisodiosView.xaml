@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="Guía_De_Episodios.Views.ListaEpisodiosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Guía_De_Episodios.Views" xmlns:viewmodels="clr-namespace:Guía_De_Episodios.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:GuiaDeEpisodios}"
+             mc:Ignorable="d" x:Name="uc2"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+
+        <DataTemplate x:Key="vistaEpi">
+            <local:EpisodioView>
+
+                <local:EpisodioView.InputBindings>
+                    <MouseBinding Command="{Binding ElementName=uc2, Path=DataContext.CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:Vistas.DetallesEpi}" MouseAction="LeftDoubleClick"/>
+                </local:EpisodioView.InputBindings>
+
+            </local:EpisodioView>
+        </DataTemplate>
+
+        <ItemsPanelTemplate x:Key="vistaEpis">
+            <WrapPanel/>
+        </ItemsPanelTemplate>
+        
+    </UserControl.Resources>
+    
+    <DockPanel>
+
+        <DockPanel.Background>
+            <ImageBrush ImageSource="https://i.pinimg.com/736x/e2/1c/1f/e21c1fcf78073a5b2803f6de8be8d358.jpg"/>
+        </DockPanel.Background>
+
+        <Border Padding="2" Margin="5" BorderBrush="White" BorderThickness="2" DockPanel.Dock="Top">
+
+            <Border.Background>
+                <SolidColorBrush Color="#ffc8b4" Opacity="0.5"/>
+            </Border.Background>
+
+            <TextBlock FontWeight="Bold" Foreground="White" FontSize="50" TextAlignment="Center" FontFamily="Gill Sans MT Extra Bold" Text="{Binding Temporada.Numero, StringFormat='TEMPORADA 0'}"/>
+
+        </Border>
+
+        <WrapPanel DockPanel.Dock="Top">
+
+            <WrapPanel.Resources>
+                <Style TargetType="Button">
+
+                    <Setter Property="Margin" Value="10,5,5,10"/>
+                    <Setter Property="FontSize" Value="15"/>
+
+                </Style>
+            </WrapPanel.Resources>
+
+            <TextBlock FontWeight="Bold" Foreground="#ffc8b4" FontSize="20">Filtrar por:</TextBlock>
+            <Button Command="{Binding FiltrarEpisodiosCommand}" CommandParameter="x">Orden de agregados</Button>
+            <Button Command="{Binding FiltrarEpisodiosCommand}" CommandParameter="Primero - último">De primero a último</Button>
+            <Button Command="{Binding FiltrarEpisodiosCommand}" CommandParameter="Último - primero">De último a primero</Button>
+
+        </WrapPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" >
+
+            <Grid>
+                <ListBox ItemsSource="{Binding FiltroEpisodios}" SelectedItem="{Binding Episodio}" ItemTemplate="{StaticResource vistaEpi}" ItemsPanel="{StaticResource vistaEpis}" Background="Transparent"/>
+
+                <WrapPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+
+                    <Button Margin="2" Width="50" Height="50" Background="Transparent" BorderThickness="0" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:Vistas.AgregarEpi}">
+                        <Image Source="https://cdn-icons-png.flaticon.com/128/11018/11018427.png"/>
+                    </Button>
+                    
+                    <Button Margin="2" Width="50" Height="50" Background="Transparent" BorderThickness="0" Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:Vistas.DetallesTem}">
+                        <Image Source="https://cdn-icons-png.flaticon.com/128/7074/7074319.png"/>
+                    </Button>
+
+                </WrapPanel>
+            </Grid>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>
