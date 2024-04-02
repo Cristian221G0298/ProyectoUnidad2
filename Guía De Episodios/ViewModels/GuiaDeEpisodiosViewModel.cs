@@ -119,6 +119,7 @@ namespace Guía_De_Episodios.ViewModels
             Actualizar(nameof(Temporada));
             Actualizar(nameof(Episodio));
 
+            Actualizar(nameof(FiltroTemporadas));
             Actualizar(nameof(FiltroEpisodios));
         }
         void Serializar()
@@ -158,6 +159,7 @@ namespace Guía_De_Episodios.ViewModels
                     FiltroTemporadas = Temporadas;
                     break;
             }
+            Actualizar(nameof(FiltroTemporadas));
         }
         void FiltrarEpisodios(string filtro)
         {
